@@ -1,0 +1,33 @@
+<mat-card>
+  <p>
+    Request triggered times: <strong>{{ countTriggered }}</strong>
+  </p>
+  <p>
+    Response arrived times: <strong>{{ countResponse }}</strong>
+  </p>
+  <ul>
+    <li *ngFor="let user of users | async">{{ user.name }} ({{user.timestamp | date:'hh:mm:ss.SSS'}})</li>
+  </ul>
+</mat-card>
+
+<form [formGroup]="settingsForm">
+
+  <mat-form-field>
+    <mat-label>Number of request</mat-label>
+    <mat-select formControlName="requestCount">
+      <mat-option value="5">5</mat-option>
+      <mat-option value="10">10</mat-option>
+      <mat-option value="20">20</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Delay between requests (server response delay is 100)</mat-label>
+    <mat-select formControlName="requestDelay">
+      <mat-option value="0">0</mat-option>
+      <mat-option value="100">100</mat-option>
+      <mat-option value="200">200</mat-option>
+      <mat-option value="500">500</mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
